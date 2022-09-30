@@ -1,0 +1,61 @@
+body {
+    background-color: darkslategrey;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
+}
+
+a:link, a:visited, a:active, a:hover {
+    color:white;
+    text-decoration: none;
+}
+
+@keyframes grow {
+    from {font-size:xx-large;}
+    to {font-size:xx-large; transform:rotateY(360deg); transform-style: preserve-3d}
+}
+
+h1 {
+    color:white;
+    animation-name: grow;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-out;
+    display:inline-block;
+}
+
+div.container {
+    position: relative;
+    height: 320px;
+    width: 992px;
+}
+
+div.scale {
+    transform: scale(0.5);
+    transform-origin: left;
+}
+
+img.logo {
+    position: absolute;
+    top:0;
+    left:0;
+    filter: brightness(0) invert(100%) drop-shadow(1px 1px 3px rgb(0, 0, 0, 0.7)) blur(0.6px) opacity(50%);
+}
+
+img.logo:hover {
+    filter: brightness(0) invert(100%) drop-shadow(1px 1px 10px rgba(45, 13, 160, 0.7)) blur(0.6px);
+}
+
+span.logo {
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    color:darkslategrey;
+    font-size:xx-large;
+    position: absolute;
+    bottom:28px;
+    left: 8px;
+    z-index: 1;
+    width: 100%;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 30px;
+}
