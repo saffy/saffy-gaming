@@ -1,0 +1,33 @@
+img {
+   display:block;
+   margin: auto;
+   width:60%;
+   height:60%; 
+   outline:5px solid rgb(9, 27, 23, .7);
+   outline-offset: -4px;
+   border-left:5px;
+}
+.relicImage {
+    display: flex;
+    background-color: rgb(9, 27, 23);
+    border-radius: 50px;
+    width:100px;
+    height:100px;
+    margin: 0 auto;
+}
+
+.relicImage span {
+    color:white;
+    width:inherit;
+    position: absolute;
+    text-align: center;
+}
+
+#grid {
+    display: grid;
+    text-align: center;
+    grid-template-columns: repeat(4,1fr);
+    grid-auto-flow: row;
+    column-gap: 10px;
+    row-gap:10px;
+}
