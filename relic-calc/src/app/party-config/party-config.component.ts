@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-party-config',
@@ -6,9 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./party-config.component.css']
 })
 export class PartyConfigComponent implements OnInit {
-  partySize: number = 6;
-
-  constructor() { }
+  @Input() size!: number;
+  @Output() sizeChange = new EventEmitter<number>();
+  constructor() {
+   }
 
   ngOnInit(): void {
   }

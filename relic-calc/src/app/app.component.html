@@ -5,8 +5,13 @@
 <body>
 <h1>Relic Even Split Tool</h1>
 <hr/>
-<app-party-config></app-party-config>
-  <app-relic-select></app-relic-select>
+<app-party-config [(size)]="size"></app-party-config>
+  <app-relic-select [(relics)]="relics"></app-relic-select>
+
+  Data size = {{size}}
+  Relics =  {{relics | json}}
+  {{calculate()}}
+
 
 </body>
 
