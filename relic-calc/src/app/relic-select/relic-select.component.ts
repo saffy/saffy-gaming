@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-relic-select',
@@ -6,13 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./relic-select.component.css']
 })
 export class RelicSelectComponent implements OnInit {
+  @Input() relics!: {[index:string]:{count:number}};
+  @Output() relicsChange = new EventEmitter<any>();
 
   constructor() { }
 
   showName: boolean = true;
   showAP = false;
   showMedals = false;
-
 
   relicList = [
   { id: 'Lesser_Ancient_Crown', name: 'Lesser Ancient Crown', points: 2400 }, 
@@ -32,36 +33,17 @@ export class RelicSelectComponent implements OnInit {
   { id: 'Major_Ancient_Icon',name: 'Major Ancient Icon', points: 1200  }, 
   { id: 'Major_Ancient_Seal',name: 'Major Ancient Seal', points: 2400  }]
 
-  relicCount: {[index:string]:number} = 
-    {'Lesser_Ancient_Crown': 0,
-    'Lesser_Ancient_Goblet': 0,
-     'Lesser_Ancient_Icon': 0 ,
-     'Lesser_Ancient_Seal': 0,
-     'Ancient_Crown': 0 ,
-     'Ancient_Goblet': 0 ,
-     'Ancient_Icon': 0 ,
-     'Ancient_Seal': 0 ,
-     'Greater_Ancient_Crown': 0,
-     'Greater_Ancient_Goblet': 0  ,
-     'Greater_Ancient_Icon': 0 ,
-     'Greater_Ancient_Seal': 0  ,
-     'Major_Ancient_Crown': 0  ,
-     'Major_Ancient_Goblet': 0  ,
-     'Major_Ancient_Icon': 0  ,
-     'Major_Ancient_Seal': 0};
-  
-
   ngOnInit(): void {
   }
 
   add(relic: string) {
-    this.relicCount[relic]++;
+    this.relics[relic].count++;
   }
 
   subtract(event: MouseEvent, relic: string) {
     event.preventDefault();
-    if(this.relicCount[relic] >0){
-      this.relicCount[relic]--;
+    if(this.relics[relic].count >0){
+      this.relics[relic].count--;
     }
   }
 

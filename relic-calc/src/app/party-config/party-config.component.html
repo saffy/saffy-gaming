@@ -1,3 +1,3 @@
-<span>Calculated for {{size}} group members, for as even a split as possible.</span>
+<span>Calculated for {{size}} group member<span *ngIf="size > 1">s</span>, for as even a split as possible.</span>
 <hr/>
 <input name="partySize" type="input" [(ngModel)]="size" (ngModelChange)="sizeChange.emit($event)">

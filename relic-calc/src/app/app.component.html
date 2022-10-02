@@ -8,9 +8,14 @@
 <app-party-config [(size)]="size"></app-party-config>
   <app-relic-select [(relics)]="relics"></app-relic-select>
 
-  Data size = {{size}}
-  Relics =  {{relics | json}}
-  {{calculate()}}
+
+  <!-- Relics =  {{relics | json}} -->
+
+  <span *ngIf="size <= 1">They're all yours baby!</span>
+  <div *ngIf="size > 1">  Data size = {{size}}   </div>
+
+  <button (click)="calculate(size)">Go!</button>
+  {{calculated | json}}
 
 
 </body>
