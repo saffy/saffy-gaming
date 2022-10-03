@@ -1,8 +1,11 @@
-<mat-card-content>
+<mat-card>
+    <p>Remember to roll, and change loot!</p>
 <span>Tap to add, Right click to subtract, or use buttons.</span>
-<input name="nameCheckbox" type="checkbox" [(ngModel)]="showName" [ngModelOptions]="{standalone: true}">Show Name
-<input type="checkbox" [(ngModel)]="showAP"> Show AP
-</mat-card-content>
+<mat-card-actions align="end">
+<mat-slide-toggle [(ngModel)]="showName">Show Name</mat-slide-toggle>
+<mat-slide-toggle [(ngModel)]="showAP"> Show AP</mat-slide-toggle>
+</mat-card-actions>
+</mat-card>
 
 <mat-card-content>
 <div id="grid">
@@ -18,4 +21,4 @@
     <button color="warn" mat-icon-button  *ngIf="relics[relic.id].count > 0" (click)="subtract($event, relic.id)"><mat-icon>remove_circle</mat-icon></button>
         </div>
     </div>
-</mat-card-content>
+    </mat-card-content>
