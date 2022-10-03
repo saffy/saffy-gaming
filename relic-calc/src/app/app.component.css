@@ -11,9 +11,13 @@ button.go-button {
 }
 
 .footer {
-    position:fixed;
+    position:relative;
     bottom:0;
     width:100%;
     text-align: center;
     margin: 0;
+}
+
+.content {
+    min-height: 90vh;
 }

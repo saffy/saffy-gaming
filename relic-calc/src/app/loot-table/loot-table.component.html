@@ -31,5 +31,15 @@
     </tr>
     </ng-container>
 </table>
+<button mat-button (click)="generateShortText()">Generate Text (<250 char)</button>
+<button mat-button (click)="generateLongText()">Generate Text</button>
 
+<mat-form-field>
+    <textarea matInput maxlength="250">{{chatText}}</textarea>
+</mat-form-field>
+
+<button mat-button>Generate Para</button>
+
+<button mat-button (click)="triggerDc()">Generate Discord</button>
+<button mat-button (click)="triggerShare()">Mobile Share</button>
 </div>

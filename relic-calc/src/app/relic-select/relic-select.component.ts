@@ -12,10 +12,12 @@ export class RelicSelectComponent implements OnInit {
 
   constructor() { }
 
-  showName: boolean = true;
-  showAP = false;
+
   showMedals = false;
   relicList = relicList;
+  isSmallDevice = window.matchMedia("screen and (max-width: 700px)")
+  showName: boolean = true && !this.isSmallDevice;
+  showAP = false;
 
   ngOnInit(): void {
   }

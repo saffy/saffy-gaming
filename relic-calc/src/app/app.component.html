@@ -5,9 +5,11 @@
 </head>
 <body>
   <mat-sidenav-container fullscreen>
+    <div class="content" #content>
   <mat-card-title>
 <h1>Relic Even Split Tool</h1>
 </mat-card-title>
+
 <app-party-config [(size)]="size"></app-party-config>
 <app-relic-select [(relics)]="relics"></app-relic-select>
 
@@ -20,6 +22,7 @@
 
   </app-loot-table>
   <span *ngIf="size <= 1">They're all yours baby!</span>
+</div>
 <div class="footer" #footer>
   Made by Saffy of Siel NA Classic
 </div>

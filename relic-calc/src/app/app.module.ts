@@ -16,6 +16,7 @@ import { AppComponent } from './app.component';
 import { RelicSelectComponent } from './relic-select/relic-select.component';
 import { PartyConfigComponent } from './party-config/party-config.component';
 import { LootTableComponent } from './loot-table/loot-table.component';
+import {TextFieldModule} from '@angular/cdk/text-field';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 
@@ -41,6 +42,7 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     MatCardModule,
     MatSelectModule,
     MatSidenavModule,
+    TextFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent]

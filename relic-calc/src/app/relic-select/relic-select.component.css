@@ -30,3 +30,21 @@ img {
     column-gap: 10px;
     row-gap:10px;
 }
+
+@media only screen and (max-width: 700px){
+    body {
+        width:100%;
+    }
+    #grid {
+        width:100%;
+        grid-template-columns: repeat(auto-fit,20%);
+        column-gap: 5px;
+        row-gap:5px;
+    }
+    .relicImage {
+        transform:scale(70%);
+    }
+    .relicButton {
+        white-space:pre-line;
+    }
+}
