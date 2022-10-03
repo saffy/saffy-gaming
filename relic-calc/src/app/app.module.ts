@@ -11,10 +11,12 @@ import {MatTableModule} from '@angular/material/table';
 import {MatCardModule} from '@angular/material/card';
 import {MatSelectModule} from '@angular/material/select';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
+import {MatSidenavModule} from '@angular/material/sidenav';
 import { AppComponent } from './app.component';
 import { RelicSelectComponent } from './relic-select/relic-select.component';
 import { PartyConfigComponent } from './party-config/party-config.component';
 import { LootTableComponent } from './loot-table/loot-table.component';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 
 @NgModule({
@@ -33,10 +35,12 @@ import { LootTableComponent } from './loot-table/loot-table.component';
     MatBadgeModule,
     MatInputModule,
     MatFormFieldModule,
+    MatSlideToggleModule,
     BrowserAnimationsModule,
     MatTableModule,
     MatCardModule,
-    MatSelectModule
+    MatSelectModule,
+    MatSidenavModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
