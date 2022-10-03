@@ -1,3 +1,2 @@
-html {
-    font-family: Georgia, 'Times New Roman', Times, serif;
-}
+html, body { height: 100%; }
+body { margin: 0; font-family: Georgia, 'Times New Roman', Times, serif; background-color: azure; }

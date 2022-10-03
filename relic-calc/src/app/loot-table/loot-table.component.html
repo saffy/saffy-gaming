@@ -1,0 +1,35 @@
+<div *ngIf="showTable">
+<table class="mat-table mat-elevation-z1">
+    <tr class="mat-header-row">
+    <th class="mat-header-row">
+        Player
+    </th>
+    <th class="mat-header-row">
+        Relics
+    </th>
+    <th class="mat-header-row">
+        AP
+    </th>
+</tr>
+    <ng-container *ngFor="let player of calculated; index as i">
+    <tr class="mat-header-row">
+        <td class="mat-cell" colspan="3">
+            <mat-form-field>
+                <mat-label></mat-label>
+            <input matInput value="Player {{i+1}}">
+             </mat-form-field>
+        </td>
+    </tr>
+    <tr class="mat-header-row" *ngFor="let relic of calculated[i].relics | keyvalue; index as j">
+        <td class="mat-cell"></td>
+        <td class="mat-cell">{{RELIC_LIST[relic.key].name}} <span *ngIf="relic.value > 1">x {{relic.value}}</span></td>
+        <td class="mat-cell">{{RELIC_LIST[relic.key].points * relic.value}}</td>
+    </tr>
+    <tr class="mat-header-row">
+        <td class="mat-cell" colspan="2"></td>
+        <td class="mat-cell"><strong>{{calculated[i].points}}</strong></td>
+    </tr>
+    </ng-container>
+</table>
+
+</div>

@@ -1,21 +1,24 @@
 <html>
 <head>
   <title>Relic Calculator</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body>
+  <mat-card-title>
 <h1>Relic Even Split Tool</h1>
-<hr/>
+</mat-card-title>
 <app-party-config [(size)]="size"></app-party-config>
-  <app-relic-select [(relics)]="relics"></app-relic-select>
-
+<app-relic-select [(relics)]="relics"></app-relic-select>
 
   <!-- Relics =  {{relics | json}} -->
 
-  <span *ngIf="size <= 1">They're all yours baby!</span>
-  <div *ngIf="size > 1">  Data size = {{size}}   </div>
+ <div class="go-button-container">
+  <button class="go-button" mat-flat-button color="accent" (click)="calculate(size)">Go!</button>
+</div>
+  <app-loot-table [(calculated)]="calculated">
 
-  <button (click)="calculate(size)">Go!</button>
-  {{calculated | json}}
+  </app-loot-table>
+  <span *ngIf="size <= 1">They're all yours baby!</span>
 
 
 </body>

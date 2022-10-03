@@ -1,0 +1,27 @@
+input, table {
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-size: medium;
+}
+
+.mat-form-field, .mat-form-field-wrapper {
+    width: 33%;
+    padding:0;
+}
+
+table {
+ background: none;
+}
+
+th,td,tr {
+    
+ color: black;
+}
+
+tr td:first-child {
+    width:33%;
+    height: 50%;
+}
+
+td {
+    padding: 1px;
+}

@@ -14,16 +14,15 @@ img {
     width:100px;
     height:100px;
     margin: 0 auto;
-}
-
-.relicImage span {
-    color:white;
-    width:inherit;
-    position: absolute;
     text-align: center;
 }
 
+.relicButton {
+    white-space:nowrap;
+}
+
 #grid {
+    margin-top:20px;
     display: grid;
     text-align: center;
     grid-template-columns: repeat(4,1fr);

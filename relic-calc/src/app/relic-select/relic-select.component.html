@@ -1,17 +1,21 @@
+<mat-card-content>
 <span>Tap to add, Right click to subtract, or use buttons.</span>
 <input name="nameCheckbox" type="checkbox" [(ngModel)]="showName" [ngModelOptions]="{standalone: true}">Show Name
 <input type="checkbox" [(ngModel)]="showAP"> Show AP
+</mat-card-content>
 
+<mat-card-content>
 <div id="grid">
-        <div *ngFor="let relic of relicList">
-            <div class="relicImage" (click)="add(relic.id)" (contextmenu)="subtract($event, relic.id)">
+        <div class="relicButton" *ngFor="let relic of relicList">
+            <button matRipple color="primary" class="relicImage" (click)="add(relic.id)" (contextmenu)="subtract($event, relic.id)" 
+            [matBadge]="relics[relic.id].count" [matBadgeHidden]="relics[relic.id].count < 1" matBadgeSize="large">
         <img src="assets/images/{{relic.id}}.gif" alt="{{relic.name}}"/>
-        <span *ngIf="relics[relic.id].count > 0">{{relics[relic.id].count}}</span>
         
-    </div>
-    <button (click)="add(relic.id)">+</button>
-    <button *ngIf="relics[relic.id].count > 0" (click)="subtract($event, relic.id)">-</button>
-        <span *ngIf="showName">{{relic.name}}</span>
-        <span *ngIf="showAP"> / {{relic.points}}</span>
+            </button>
+    <button color="accent" mat-icon-button (click)="add(relic.id)"><mat-icon>add_circle</mat-icon></button>
+    <span *ngIf="showName">{{relic.name}}</span>
+    <span *ngIf="showAP"> / {{relic.points}}</span>
+    <button color="warn" mat-icon-button  *ngIf="relics[relic.id].count > 0" (click)="subtract($event, relic.id)"><mat-icon>remove_circle</mat-icon></button>
         </div>
     </div>
+</mat-card-content>

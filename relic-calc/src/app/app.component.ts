@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { filter } from 'rxjs';
+import { CalculatedRelics } from './global';
 
 interface SelectedRelics {
   [index: string]: {
@@ -14,14 +14,6 @@ type Relic = {
   points: number;
 };
 
-type CalculatedRelics = Array<{
-  relics: {
-    [key: string]: number;
-  };
-  points: number;
-}>;
-
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -31,7 +23,7 @@ export class AppComponent {
   // Default number to split relics amongst.
   size: number = 6;
 
-  calculated: CalculatedRelics  = [];
+  calculated: CalculatedRelics = [];
   
   // Model of currently selected relics
   relics: SelectedRelics = 
@@ -105,7 +97,7 @@ export class AppComponent {
 
       }
    }
-   this.calculated=split;
+   this.calculated = split;
   }
   
 }

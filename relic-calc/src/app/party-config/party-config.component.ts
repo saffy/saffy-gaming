@@ -8,6 +8,8 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class PartyConfigComponent implements OnInit {
   @Input() size!: number;
   @Output() sizeChange = new EventEmitter<number>();
+
+  sizes: number[] = [1,2,3,4,5,6];
   constructor() {
    }
 
