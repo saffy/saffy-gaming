@@ -1,5 +1,5 @@
 <div *ngIf="showTable">
-<table class="mat-table mat-elevation-z1">
+<table class="mat-table mat-elevation-z1" id="loot">
     <tr class="mat-header-row">
     <th class="mat-header-row">
         Player
@@ -16,7 +16,7 @@
         <td class="mat-cell" colspan="3">
             <mat-form-field>
                 <mat-label></mat-label>
-            <input matInput value="Player {{i+1}}">
+            <input matInput [(ngModel)]="partyNames[i]" [ngModelOptions]="{updateOn: 'blur'}" (ngModelChange)="nameUpdated($event)">
              </mat-form-field>
         </td>
     </tr>
@@ -31,15 +31,16 @@
     </tr>
     </ng-container>
 </table>
-<button mat-button (click)="generateShortText()">Generate Text (<250 char)</button>
-<button mat-button (click)="generateLongText()">Generate Text</button>
+<ng-container class="share-button-container">
+<button mat-flat-button color="primary" (click)="generateShortText()">Generate Text (<250 char)</button>
+<button mat-flat-button color="primary" (click)="generateLongText()">Generate Text</button>
+<button mat-flat-button color="primary">Generate Para</button>
+
+<button mat-flat-button color="primary" (click)="triggerDc()">Open Discord</button>
+<button mat-flat-button color="primary"  (click)="triggerShare()">Share Text (Mobile)</button>
 
 <mat-form-field>
     <textarea matInput maxlength="250">{{chatText}}</textarea>
 </mat-form-field>
-
-<button mat-button>Generate Para</button>
-
-<button mat-button (click)="triggerDc()">Generate Discord</button>
-<button mat-button (click)="triggerShare()">Mobile Share</button>
+</ng-container>
 </div>

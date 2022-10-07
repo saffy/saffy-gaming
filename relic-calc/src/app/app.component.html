@@ -18,7 +18,7 @@
  <div class="go-button-container">
   <button class="go-button" mat-flat-button color="accent" (click)="calculate(size)">Go!</button>
 </div>
-  <app-loot-table [(calculated)]="calculated">
+  <app-loot-table [(calculated)]="calculated" (partyNamesChange)="nameChange($event)">
 
   </app-loot-table>
   <span *ngIf="size <= 1">They're all yours baby!</span>

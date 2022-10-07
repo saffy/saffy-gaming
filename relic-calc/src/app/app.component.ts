@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter } from '@angular/core';
 import { CalculatedRelics } from './global';
 
 interface SelectedRelics {
@@ -22,6 +22,9 @@ type Relic = {
 export class AppComponent {
   // Default number to split relics amongst.
   size: number = 6;
+
+  // Optional: names of party members
+  partyNames: string[] = [];
 
   calculated: CalculatedRelics = [];
   
@@ -98,6 +101,10 @@ export class AppComponent {
       }
    }
    this.calculated = split;
+  }
+
+  nameChange(names: string[]) {
+    this.partyNames = names;
   }
   
 }

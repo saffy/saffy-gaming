@@ -14,7 +14,7 @@ table {
 
 th,td,tr {
     
- color: black;
+ color: white;
 }
 
 tr td:first-child {
@@ -22,6 +22,21 @@ tr td:first-child {
     height: 50%;
 }
 
+tr td:nth-child(2) {
+    color:palegreen
+}
+
 td {
-    padding: 1px;
+    padding: 5px;
+}
+
+table {
+    width: 50%;
+    margin: auto;
+    padding: 10px;
+}
+
+/* Deep is deprecated, but cannot override otherwise. */
+:host ::ng-deep .mat-form-field-underline{
+    width: 50% 
 }

@@ -2,7 +2,7 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewEncapsulation} from '@angular/core';
 import {KeyValue} from '@angular/common';
 import { CalculatedRelics, RELIC_LIST } from '../global';
-import { share } from 'rxjs';
+import { map, share } from 'rxjs';
 
 @Component({
   selector: 'app-loot-table',
@@ -12,13 +12,14 @@ import { share } from 'rxjs';
 export class LootTableComponent implements OnInit {
   @Input() calculated!: CalculatedRelics;
   @Output() calculatedChange = new EventEmitter<CalculatedRelics>();
+  @Output() partyNamesChange = new EventEmitter<string[]>();
 
-  partyNames: string[] = [];
   showTable = false;
   RELIC_LIST = RELIC_LIST;
   chatText: string = "";
   aionSymbols = ['','','','','','']
   webNavigator: any= null;
+  partyNames: string[] = [];
 
   constructor() { 
     this.webNavigator = window.navigator;
@@ -29,8 +30,8 @@ export class LootTableComponent implements OnInit {
 
   ngOnChanges(): void {
     if(this.calculated.length > 0) {
-    this.partyNames = new Array(this.calculated.length);
-    this.showTable = true;
+      this.partyNames = new Array(this.calculated.length).fill("").map((_unused:string, i: number) => `Player ${i+1}`);
+      this.showTable = true;
     }
   }
 
@@ -81,8 +82,10 @@ export class LootTableComponent implements OnInit {
   async triggerDc() {
     let url = encodeURI("discord://");
     window.open(url);
-
-
   }
 
+  nameUpdated(event: EventEmitter<string>) {
+    console.log("names updated, emitting");
+    this.partyNamesChange.emit(this.partyNames);
+  }
 }

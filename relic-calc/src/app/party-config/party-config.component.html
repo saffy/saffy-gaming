@@ -1,7 +1,7 @@
 <mat-card>
 <span>Calculated for 
     <mat-form-field>
-        <mat-select [(value)]="size">
+        <mat-select [(ngModel)]="size" (ngModelChange)="sizeChanged()">
             <mat-option *ngFor="let s of sizes" [value]="s">
                 {{s}}
             </mat-option>
@@ -10,3 +10,10 @@
     
      group members, for as even a split as possible.</span>
 </mat-card>
+
+<!-- add clear mechanic-->
+<!-- add total AP-->
+<!-- add AP in output-->
+<!-- add locked app feature (clicking go calcualtes and locks)-->
+<!-- save usernames-->
+<!-- setting for just alt text not images-->
