@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Input, Output } from '@angular/core';
 import { relicList } from '../global';
+import {TooltipPosition} from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-relic-select',
@@ -11,7 +12,6 @@ export class RelicSelectComponent implements OnInit {
   @Output() relicsChange = new EventEmitter<any>();
 
   constructor() { }
-
 
   showMedals = false;
   relicList = relicList;

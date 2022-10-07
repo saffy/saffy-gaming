@@ -47,4 +47,7 @@ img {
     .relicButton {
         white-space:pre-line;
     }
+    ::ng-deep .mat-tooltip{
+        display: none;
+    }
 }

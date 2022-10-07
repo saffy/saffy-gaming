@@ -40,7 +40,8 @@
 <button mat-flat-button color="primary"  (click)="triggerShare()">Share Text (Mobile)</button>
 
 <mat-form-field>
-    <textarea matInput maxlength="250">{{chatText}}</textarea>
+    <textarea matInput maxlength="250" [cdkCopyToClipboard]="chatText" onclick="copyText(chatText)">{{chatText}}</textarea>
 </mat-form-field>
+<button *ngFor="let name of partyNames; index as i" mat-flat-button color="accent" (click)="copyText(i)">Copy for {{partyNames[i]}}</button>
 </ng-container>
 </div>

@@ -12,7 +12,7 @@
 <div id="grid">
         <div class="relicButton" *ngFor="let relic of relicList">
             <button matRipple color="primary" class="relicImage" [matRippleRadius]="60" (click)="add(relic.id)" (contextmenu)="subtract($event, relic.id)" 
-            [matBadge]="relics[relic.id].count" [matBadgeHidden]="relics[relic.id].count < 1" matBadgeSize="large">
+            [matBadge]="relics[relic.id].count" [matBadgeHidden]="relics[relic.id].count < 1" matBadgeSize="large" [matTooltip]="relic.name" [matTooltipPosition]="'above'">
         <img src="assets/images/{{relic.id}}.gif" alt="{{relic.name}}"/>
         
             </button>

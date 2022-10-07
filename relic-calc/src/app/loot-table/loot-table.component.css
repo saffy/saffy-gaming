@@ -37,6 +37,6 @@ table {
 }
 
 /* Deep is deprecated, but cannot override otherwise. */
-:host ::ng-deep .mat-form-field-underline{
+:host ::ng-deep table .mat-form-field-underline{
     width: 50% 
 }

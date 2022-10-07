@@ -18,6 +18,9 @@ import { PartyConfigComponent } from './party-config/party-config.component';
 import { LootTableComponent } from './loot-table/loot-table.component';
 import {TextFieldModule} from '@angular/cdk/text-field';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {ClipboardModule} from '@angular/cdk/clipboard';
+
 
 
 @NgModule({
@@ -42,7 +45,9 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     MatCardModule,
     MatSelectModule,
     MatSidenavModule,
-    TextFieldModule
+    TextFieldModule,
+    MatTooltipModule,
+    ClipboardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
