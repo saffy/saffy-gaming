@@ -37,12 +37,12 @@ img {
     }
     #grid {
         width:100%;
-        grid-template-columns: repeat(auto-fit,20%);
+        grid-template-columns: repeat(auto-fit,4fr);
         column-gap: 5px;
         row-gap:5px;
     }
     .relicImage {
-        transform:scale(70%);
+        transform:scale(90%);
     }
     .relicButton {
         white-space:pre-line;
