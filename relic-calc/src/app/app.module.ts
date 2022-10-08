@@ -20,7 +20,8 @@ import {TextFieldModule} from '@angular/cdk/text-field';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {ClipboardModule} from '@angular/cdk/clipboard';
-
+import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
+import {MatBottomSheetRef, MAT_BOTTOM_SHEET_DATA} from '@angular/material/bottom-sheet';
 
 
 @NgModule({
@@ -47,9 +48,13 @@ import {ClipboardModule} from '@angular/cdk/clipboard';
     MatSidenavModule,
     TextFieldModule,
     MatTooltipModule,
-    ClipboardModule
+    ClipboardModule,
+    MatBottomSheetModule
   ],
-  providers: [],
+  providers: [
+    { provide: MatBottomSheetRef, useValue: {} },
+    { provide: MAT_BOTTOM_SHEET_DATA, useValue: {} },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
