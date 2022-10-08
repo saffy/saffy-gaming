@@ -37,15 +37,12 @@ img {
     }
     #grid {
         width:100%;
-        grid-template-columns: repeat(auto-fit,4fr);
-        column-gap: 5px;
-        row-gap:5px;
+        grid-template-columns: repeat(4,25%);
+        column-gap: 0;
+        row-gap: 0;
     }
     .relicImage {
         transform:scale(90%);
-    }
-    .relicButton {
-        white-space:pre-line;
     }
     ::ng-deep .mat-tooltip{
         display: none;

@@ -16,7 +16,7 @@ export class RelicSelectComponent implements OnInit {
   showMedals = false;
   relicList = relicList;
   isSmallDevice = window.matchMedia("screen and (max-width: 700px)")
-  showName: boolean = true && !this.isSmallDevice;
+  showName: boolean = false;
   showAP = false;
 
   ngOnInit(): void {
@@ -26,6 +26,7 @@ export class RelicSelectComponent implements OnInit {
     this.relics[relic].count++;
   }
 
+  // on mobile this should allow users to select a size from popup
   subtract(event: MouseEvent, relic: string) {
     event.preventDefault();
     if(this.relics[relic].count >0){
