@@ -1,5 +1,5 @@
 <mat-card>
-<span>Calculated for 
+<span>Calculated for
     <mat-form-field>
         <mat-select [(ngModel)]="size" (ngModelChange)="sizeChanged()">
             <mat-option *ngFor="let s of sizes" [value]="s">
@@ -7,11 +7,10 @@
             </mat-option>
         </mat-select>
     </mat-form-field>
-    
-     group members, for as even a split as possible.</span>
+
+  group member<span *ngIf="size > 1">s</span>, for as even a split as possible.</span>
 </mat-card>
 
-<!-- add clear mechanic-->
 <!-- add total AP-->
 <!-- add AP in output-->
 <!-- add locked app feature (clicking go calcualtes and locks)-->
