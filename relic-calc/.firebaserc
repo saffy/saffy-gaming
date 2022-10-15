@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "saffy-gaming"
+  },
+  "targets": {
+    "saffy-gaming": {
+      "hosting": {
+        "relic-app": [
+          "saffy-relic-calc"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

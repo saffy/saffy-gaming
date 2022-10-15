@@ -1,0 +1,11 @@
+{
+  "hosting": {
+    "target": "relic-app",
+    "public": "dist/relic-calc",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
