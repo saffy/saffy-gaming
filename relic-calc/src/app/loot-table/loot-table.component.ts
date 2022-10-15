@@ -74,16 +74,31 @@ export class LootTableComponent implements OnInit {
     return textBuilder;
   }
 
+  generateLongTextFor(i: number):string{
+    let textBuilder: string = ""
+
+    let relics = Object.keys(this.calculated![i].relics);
+      if(relics.length > 0) {
+        textBuilder = textBuilder + `[${this.partyNames[i]}|${this.calculated![i].points}]: `;
+        let mappedRelics = relics.map((relic)=>{return `${RELIC_LIST[relic].name} x ${this.calculated![i].relics[relic]}`});
+  
+        textBuilder = textBuilder + mappedRelics.join(', ');
+        textBuilder = textBuilder + "  ";
+    }
+    return textBuilder;
+  }
+
   generateLongText() {
     let textBuilder: string = ""
     
     for (let i = 0; i < this.calculated!.length; i++) {
       let relics = Object.keys(this.calculated![i].relics);
       if(relics.length > 0) {
-        textBuilder = textBuilder + `[${this.partyNames[i]}]: `;
+        textBuilder +=`[${this.partyNames[i]}|${this.calculated![i].points}]: \r\n`;
       let mappedRelics = relics.map((relic)=>{return `${RELIC_LIST[relic].name} x ${this.calculated![i].relics[relic]}`});
 
-      textBuilder = textBuilder + mappedRelics.join('\r\n');
+      let mappedRelicsString = mappedRelics.join("\r\n");
+      textBuilder += mappedRelicsString + "\r\n\n";
     }
   }
   this.chatText = textBuilder;
@@ -125,8 +140,12 @@ export class LootTableComponent implements OnInit {
     }
   }
 
-  copyText(i: number) {
+  copyTextFor(i: number) {
     let text: string = this.generateShortTextFor(i);
+    this.clipboard.copy(text);
+  }
+
+  copyText(text: string) {
     this.clipboard.copy(text);
   }
 

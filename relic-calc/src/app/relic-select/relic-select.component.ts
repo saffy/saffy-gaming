@@ -34,4 +34,11 @@ export class RelicSelectComponent implements OnInit {
     }
   }
 
+  resetRelics(_event: MouseEvent) {
+    for (let relic of Object.keys(this.relics)) {
+     this.relics[relic].count = 0;
+    }
+    this.relicsChange.emit(this.relics);
+  }
+
 }

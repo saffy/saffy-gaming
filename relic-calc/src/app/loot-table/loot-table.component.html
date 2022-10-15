@@ -18,7 +18,7 @@
     <ng-container *ngFor="let player of calculated; index as i">
     <tr *ngIf="calculated[i].points > 0" class="mat-row">
         <td class="mat-cell cell-copy-button" [attr.rowSpan]="getRowSpan(calculated[i])">  
-            <button *ngIf="calculated[i].points > 0" mat-icon-button color="accent" class="button-player-copy"  (click)="copyText(i)" tabindex="-1" 
+            <button *ngIf="calculated[i].points > 0" mat-icon-button color="accent" class="button-player-copy"  (click)="copyTextFor(i)" tabindex="-1" 
                 attr.aria-label="Copy for {{partyNames[i]}}" matTooltip="Copy for {{partyNames[i]}}" [matTooltipShowDelay]="1000">
             <mat-icon>content_copy</mat-icon>
             </button></td>
@@ -46,7 +46,7 @@
     
 
 <mat-form-field>
-    <textarea matInput maxlength="250" [cdkCopyToClipboard]="chatText" onclick="copyText(chatText)">{{chatText}}</textarea>
+    <textarea matInput [rows]="partyNames.length" maxlength="250" [cdkCopyToClipboard]="chatText" (click)="copyText(chatText)">{{chatText}}</textarea>
 </mat-form-field>
 
 <button mat-flat-button color="primary" (click)="generateShortText()">Generate Text (<250 char)</button>
