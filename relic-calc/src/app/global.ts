@@ -1,9 +1,11 @@
-export type CalculatedRelics = Array<{
+export type CalculatedRelics = Array<UserRelics>;
+
+export type UserRelics = {
   relics: {
     [key: string]: number;
   };
   points: number;
-}>;
+};
 
 export var relicList = [
   { id: 'Lesser_Ancient_Crown', name: 'Lesser Ancient Crown', points: 2400 }, 

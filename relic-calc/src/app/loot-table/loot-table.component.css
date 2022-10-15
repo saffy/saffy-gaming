@@ -1,42 +1,127 @@
-input, table {
+:host {
     font-family:Georgia, 'Times New Roman', Times, serif;
     font-size: medium;
 }
 
-.mat-form-field, .mat-form-field-wrapper {
-    width: 33%;
-    padding:0;
-}
 
 table {
- background: none;
+    margin: auto;
+    background: none;
+    table-layout: fixed;
+    width: max-content;
+    border:none;
+    background-color: rgb(9, 27, 23);
+    padding:0.5em;
 }
-
 th,td,tr {
-    
  color: white;
 }
 
-tr td:first-child {
-    width:33%;
-    height: 50%;
+tr td.cell-copy-button {
+    padding-top: 0.5em;
+    vertical-align: top;
 }
 
+tr .cell-player-name{
+    padding:0.5em;
+
+}
 tr td:nth-child(2) {
     color:palegreen
 }
 
-td {
-    padding: 5px;
+
+.mat-form-field, .mat-form-field-wrapper {
+    width: 80%;
+    padding:0;
 }
 
-table {
-    width: 50%;
-    margin: auto;
-    padding: 10px;
+.cell-relic-name {
+    text-align:left;
+    text-indent: 2em;
+    white-space: nowrap;
+    padding-right: 1em;
 }
 
-/* Deep is deprecated, but cannot override otherwise. */
-:host ::ng-deep table .mat-form-field-underline{
-    width: 50% 
+.cell-relic-points {
+    text-align: right;
+}
+
+.cell-total-points {
+    text-align: right;
+    padding:1em 2em 0 2em;
+}
+
+.cell-copy-button {
+    display:visible;
+}
+
+.mobile-only {
+    display:none;
+}
+
+textarea, .share-button-container {
+    width:100%;
+
+}
+
+.div-button-discord {
+    float:right;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.error-text {
+    vertical-align: middle;
+    line-height:100%;
+}
+
+.error-img {
+    float:left;
+    padding-right:1em;
+}
+
+:host ::ng-deep .mat-form-field-infix {
+    border-top: none;
+}
+
+:host ::ng-deep .mat-form-field-wrapper {
+    overflow:hidden;
+}
+
+td.cell-player-name {
+    max-height:fit-content;
+}
+
+.mobile-only  {
+    display:none;
+}
+
+::ng-deep .mat-form-field-wrapper { margin-bottom:-2em}
+
+@media only screen and (max-width: 700px){
+    .cell-copy-button {
+        display:none;
+    }
+    .mobile-only  {
+        display:initial;
+    }
+    
+    table {
+        width:100%;
+        margin:0;
+    }
+
+    .cell-relic-name {
+        text-align:left;
+        text-indent: 0;
+        white-space: nowrap;
+        overflow:hidden;
+        padding-right: 0;
+    }
+
+    .cell-total-points, .cell-relic-points {
+        text-align: right;
+        padding-right:1em;
+    }
 }

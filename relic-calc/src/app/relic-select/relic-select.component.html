@@ -3,8 +3,9 @@
 <span>Tap to add, Right click to subtract, or use buttons.</span>
 <span>Roll - blues and above, FFA</span>
 <mat-card-actions align="end">
-<mat-slide-toggle [(ngModel)]="showName">Show Name</mat-slide-toggle>
-<mat-slide-toggle [(ngModel)]="showAP"> Show AP</mat-slide-toggle>
+    <button mat-flat-button ><mat-slide-toggle [(ngModel)]="showName">Show Name</mat-slide-toggle></button>
+    <button mat-flat-button ><mat-slide-toggle [(ngModel)]="showAP"> Show AP</mat-slide-toggle></button>
+<button mat-flat-button color="primary" (click)="resetRelics($event)"><mat-icon>clear_all</mat-icon>Clear</button>
 </mat-card-actions>
 </mat-card>
 
@@ -12,7 +13,8 @@
 <div id="grid">
         <div class="relicButton" *ngFor="let relic of relicList">
             <button matRipple color="primary" class="relicImage" [matRippleRadius]="60" (click)="add(relic.id)" (contextmenu)="subtract($event, relic.id)" 
-            [matBadge]="relics[relic.id].count" [matBadgeHidden]="relics[relic.id].count < 1" matBadgeSize="large" [matTooltip]="relic.name" [matTooltipPosition]="'above'">
+            [matBadge]="relics[relic.id].count" [matBadgeHidden]="relics[relic.id].count < 1" matBadgeSize="large" [matTooltip]="relic.name" [matTooltipPosition]="'above'" [matTooltipDisabled]="showName"
+            [matTooltipShowDelay]="200">
         <img src="assets/images/{{relic.id}}.gif" alt="{{relic.name}}"/>
         
             </button>

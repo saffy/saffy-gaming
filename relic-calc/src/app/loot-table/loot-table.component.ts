@@ -1,8 +1,14 @@
 
-import { Component, OnInit, Input, Output, EventEmitter, ViewEncapsulation} from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewEncapsulation, Injectable, Inject} from '@angular/core';
 import {KeyValue} from '@angular/common';
-import { CalculatedRelics, RELIC_LIST } from '../global';
+import { CalculatedRelics, RELIC_LIST, UserRelics } from '../global';
 import {Clipboard} from '@angular/cdk/clipboard';
+import {MatBottomSheet, MatBottomSheetRef, MAT_BOTTOM_SHEET_DATA} from '@angular/material/bottom-sheet';
+
+interface LootTableData {
+  calculatedRelics: CalculatedRelics;
+  partySize: number;
+}
 
 @Component({
   selector: 'app-loot-table',
@@ -10,7 +16,7 @@ import {Clipboard} from '@angular/cdk/clipboard';
   styleUrls: ['./loot-table.component.css']
 })
 export class LootTableComponent implements OnInit {
-  @Input() calculated!: CalculatedRelics;
+  @Input() calculated: CalculatedRelics = new Array<UserRelics>();
   @Output() calculatedChange = new EventEmitter<CalculatedRelics>();
   @Output() partyNamesChange = new EventEmitter<string[]>();
 
@@ -20,17 +26,27 @@ export class LootTableComponent implements OnInit {
   AION_SYMBOLS = ['','','','','',''];
   webNavigator: any= null;
   partyNames: string[] = [];
+  showMobile = false;
 
-  constructor(private clipboard: Clipboard) { 
+  
+  constructor(
+    @Inject(MAT_BOTTOM_SHEET_DATA) public data: LootTableData, 
+    private clipboard: Clipboard, 
+    private _bottomSheetRef: MatBottomSheetRef<LootTableComponent>
+    ) { 
     this.webNavigator = window.navigator;
   }
 
   ngOnInit(): void {
+    this.showMobile = window.innerWidth <= 700;
+    window.onresize = () => this.showMobile = window.innerWidth <= 700;
+    this.calculated = this.data.calculatedRelics;
+    this.partyNames = new Array(this.data.partySize).fill("").map((_unused:string, i: number) => `Player ${i+1}`);
+    this.showTable = this.calculated && this.calculated[0].points > 0;
   }
 
   ngOnChanges(): void {
-    if(this.calculated.length > 0) {
-      this.partyNames = new Array(this.calculated.length).fill("").map((_unused:string, i: number) => `Player ${i+1}`);
+    if(this.calculated && this.calculated[0].points > 0) {
       this.showTable = true;
     }
   }
@@ -38,7 +54,7 @@ export class LootTableComponent implements OnInit {
   generateShortText() {
     let textBuilder: string = ""
     
-    for (let i = 0; i < this.calculated.length; i++) {
+    for (let i = 0; i < this.calculated!.length; i++) {
       textBuilder = textBuilder + this.generateShortTextFor(i);
   }
     this.chatText = textBuilder;
@@ -47,11 +63,25 @@ export class LootTableComponent implements OnInit {
   generateShortTextFor(i: number):string{
     let textBuilder: string = ""
 
-    let relics = Object.keys(this.calculated[i].relics);
+    let relics = Object.keys(this.calculated![i].relics);
       if(relics.length > 0) {
-        textBuilder = textBuilder + `[${this.getShortName(i)}|${this.calculated[i].points}]: `
-        let mappedRelics = relics.map((relic)=>{return `${RELIC_LIST[relic].shortName} x ${this.calculated[i].relics[relic]}`});
+        textBuilder = textBuilder + `[${this.getShortName(i)}|${this.calculated![i].points}]: `
+        let mappedRelics = relics.map((relic)=>{return `${RELIC_LIST[relic].shortName} x ${this.calculated![i].relics[relic]}`});
 
+        textBuilder = textBuilder + mappedRelics.join(', ');
+        textBuilder = textBuilder + "  ";
+    }
+    return textBuilder;
+  }
+
+  generateLongTextFor(i: number):string{
+    let textBuilder: string = ""
+
+    let relics = Object.keys(this.calculated![i].relics);
+      if(relics.length > 0) {
+        textBuilder = textBuilder + `[${this.partyNames[i]}|${this.calculated![i].points}]: `;
+        let mappedRelics = relics.map((relic)=>{return `${RELIC_LIST[relic].name} x ${this.calculated![i].relics[relic]}`});
+  
         textBuilder = textBuilder + mappedRelics.join(', ');
         textBuilder = textBuilder + "  ";
     }
@@ -61,13 +91,14 @@ export class LootTableComponent implements OnInit {
   generateLongText() {
     let textBuilder: string = ""
     
-    for (let i = 0; i < this.calculated.length; i++) {
-      let relics = Object.keys(this.calculated[i].relics);
+    for (let i = 0; i < this.calculated!.length; i++) {
+      let relics = Object.keys(this.calculated![i].relics);
       if(relics.length > 0) {
-        textBuilder = textBuilder + `[${this.partyNames[i]}]: `;
-      let mappedRelics = relics.map((relic)=>{return `${RELIC_LIST[relic].name} x ${this.calculated[i].relics[relic]}`});
+        textBuilder +=`[${this.partyNames[i]}|${this.calculated![i].points}]: \r\n`;
+      let mappedRelics = relics.map((relic)=>{return `${RELIC_LIST[relic].name} x ${this.calculated![i].relics[relic]}`});
 
-      textBuilder = textBuilder + mappedRelics.join('\r\n');
+      let mappedRelicsString = mappedRelics.join("\r\n");
+      textBuilder += mappedRelicsString + "\r\n\n";
     }
   }
   this.chatText = textBuilder;
@@ -91,8 +122,13 @@ export class LootTableComponent implements OnInit {
     window.open(url);
   }
 
-  nameUpdated(event: EventEmitter<string>) {
+  nameUpdated($event: EventEmitter<string>, i: number, input: HTMLInputElement ) {
     console.log("names updated, emitting");
+    if(this.partyNames[i].length < 1) {
+      this.partyNames[i] = `Player ${i+1}`;
+      input.value = this.partyNames[i];
+
+    }
     this.partyNamesChange.emit(this.partyNames);
   }
 
@@ -104,8 +140,17 @@ export class LootTableComponent implements OnInit {
     }
   }
 
-  copyText(i: number) {
+  copyTextFor(i: number) {
     let text: string = this.generateShortTextFor(i);
     this.clipboard.copy(text);
+  }
+
+  copyText(text: string) {
+    this.clipboard.copy(text);
+  }
+
+  getRowSpan(userRelics: UserRelics){
+    // Span the length of player name row, relic(s) and ap row
+    return Object.keys(userRelics.relics).length + 2;
   }
 }

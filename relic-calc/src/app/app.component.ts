@@ -1,12 +1,7 @@
 import { Component, EventEmitter } from '@angular/core';
 import { CalculatedRelics } from './global';
-
-interface SelectedRelics {
-  [index: string]: {
-    count: number;
-    points: number;
-  };
-}
+import { LootTableComponent } from './loot-table/loot-table.component';
+import {MatBottomSheet} from '@angular/material/bottom-sheet';
 
 type Relic = {
   id: string;
@@ -14,12 +9,17 @@ type Relic = {
   points: number;
 };
 
+type SelectedRelics = {
+  [key:string]: {count:number,points:number}
+}
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  constructor(private _bottomSheet: MatBottomSheet) {}
   // Default number to split relics amongst.
   size: number = 6;
 
@@ -50,9 +50,9 @@ export class AppComponent {
 
   /**
    * Transforms relic model into a list of selected relics and sorts by AP.
-   * @returns sorted relics
+   * @returns sorted array of relics by points value descending
    */
-   transform() {
+   transform(): Array<Relic> {
     let filteredRelics: Array<Relic> = [];
     for(var relic of Object.keys(this.relics)) {
       if (this.relics[relic].count >0) {
@@ -101,10 +101,16 @@ export class AppComponent {
       }
    }
    this.calculated = split;
+
+   this.open();
   }
 
   nameChange(names: string[]) {
     this.partyNames = names;
+  }
+
+  open() {
+    this._bottomSheet.open(LootTableComponent, {data: {calculatedRelics: this.calculated, partySize: this.size}});
   }
   
 }

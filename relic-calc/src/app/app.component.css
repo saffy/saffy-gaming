@@ -21,3 +21,10 @@ button.go-button {
 .content {
     min-height: 90vh;
 }
+
+.content > span {
+    margin-top:1em;
+    width:100%;
+    display:inline-block;
+    text-align: center;;
+}
