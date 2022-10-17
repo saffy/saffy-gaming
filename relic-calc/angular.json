@@ -101,6 +101,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "relic-calc:build:production",
+            "firebaseProject": "saffy-gaming",
+            "firebaseHostingSite": "saffy-relic-calc"
+          }
         }
       }
     }

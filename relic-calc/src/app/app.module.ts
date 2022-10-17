@@ -12,6 +12,9 @@ import {MatBottomSheetRef, MAT_BOTTOM_SHEET_DATA} from '@angular/material/bottom
 import { LootTableModule } from './loot-table/loot-table.module';
 import { SharedModule } from './shared/shared.module';
 import { PartyConfigModule } from './party-config/party-config.module';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 
 
 @NgModule({
@@ -30,6 +33,8 @@ import { PartyConfigModule } from './party-config/party-config.module';
     BrowserAnimationsModule,
     MatSidenavModule,
     MatBottomSheetModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideFirestore(() => getFirestore()),
   ],
   providers: [
     { provide: MatBottomSheetRef, useValue: {} },
