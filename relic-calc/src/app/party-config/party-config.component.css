@@ -1,3 +1,45 @@
-mat-form-field.mat-form-field {
-    width: 50px;
+mat-card {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+}
+
+.dialog-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+mat-dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.list-player {
+    width:100%;
+    padding:1em 0;
+}
+
+.input-player-name {
+    width:100%;
+    display:inline-grid;
+    grid-template-columns: max-content 30px;
+    justify-content: space-between;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.input-player-name mat-form-field{
+    width:max-content;
+    margin-bottom:-1.3em;
+
+}
+
+.input-player-name {
+    border: 1px solid white;
+    margin-bottom:1em;
+}
+
+::ng-deep .sizeField .mat-form-field-infix{
+    width:30px;
 }

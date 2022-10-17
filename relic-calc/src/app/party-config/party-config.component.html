@@ -1,19 +1,20 @@
 <mat-card>
 <span>Calculated for 
-    <mat-form-field>
+    <mat-form-field class="sizeField">
         <mat-select [(ngModel)]="size" (ngModelChange)="sizeChanged()">
-            <mat-option *ngFor="let s of sizes" [value]="s">
+            <mat-option *ngFor="let s of SIZES" [value]="s">
                 {{s}}
             </mat-option>
         </mat-select>
     </mat-form-field>
     
      group members, for as even a split as possible.</span>
+     <button class="button-customize" mat-stroked-button color="accent" (click)="customize()"><mat-icon>
+        badge
+     </mat-icon> Customize</button>
 </mat-card>
 
-<!-- add clear mechanic-->
 <!-- add total AP-->
-<!-- add AP in output-->
 <!-- add locked app feature (clicking go calcualtes and locks)-->
 <!-- save usernames-->
 <!-- setting for just alt text not images-->

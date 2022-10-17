@@ -8,6 +8,7 @@ import {MatBottomSheet, MatBottomSheetRef, MAT_BOTTOM_SHEET_DATA} from '@angular
 interface LootTableData {
   calculatedRelics: CalculatedRelics;
   partySize: number;
+  partyNames: string[];
 }
 
 @Component({
@@ -41,7 +42,9 @@ export class LootTableComponent implements OnInit {
     this.showMobile = window.innerWidth <= 700;
     window.onresize = () => this.showMobile = window.innerWidth <= 700;
     this.calculated = this.data.calculatedRelics;
-    this.partyNames = new Array(this.data.partySize).fill("").map((_unused:string, i: number) => `Player ${i+1}`);
+    this.partyNames = new Array(this.data.partySize).fill("").map((_unused:string, i: number) => {
+      return this.data.partyNames[i] || `Player ${i+1}`
+    });
     this.showTable = this.calculated && this.calculated[0].points > 0;
   }
 
@@ -123,7 +126,6 @@ export class LootTableComponent implements OnInit {
   }
 
   nameUpdated($event: EventEmitter<string>, i: number, input: HTMLInputElement ) {
-    console.log("names updated, emitting");
     if(this.partyNames[i].length < 1) {
       this.partyNames[i] = `Player ${i+1}`;
       input.value = this.partyNames[i];

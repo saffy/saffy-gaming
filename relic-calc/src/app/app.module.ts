@@ -14,7 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { AppComponent } from './app.component';
 import { RelicSelectComponent } from './relic-select/relic-select.component';
-import { PartyConfigComponent } from './party-config/party-config.component';
+import { PartyConfigComponent,PartyConfigDialog } from './party-config/party-config.component';
 import { LootTableComponent } from './loot-table/loot-table.component';
 import {TextFieldModule} from '@angular/cdk/text-field';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
@@ -22,6 +22,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {ClipboardModule} from '@angular/cdk/clipboard';
 import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 import {MatBottomSheetRef, MAT_BOTTOM_SHEET_DATA} from '@angular/material/bottom-sheet';
+import {MatDialogModule} from '@angular/material/dialog';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 
 @NgModule({
@@ -29,7 +31,8 @@ import {MatBottomSheetRef, MAT_BOTTOM_SHEET_DATA} from '@angular/material/bottom
     AppComponent,
     RelicSelectComponent,
     PartyConfigComponent,
-    LootTableComponent
+    LootTableComponent,
+    PartyConfigDialog
   ],
   imports: [
     BrowserModule,
@@ -49,7 +52,9 @@ import {MatBottomSheetRef, MAT_BOTTOM_SHEET_DATA} from '@angular/material/bottom
     TextFieldModule,
     MatTooltipModule,
     ClipboardModule,
-    MatBottomSheetModule
+    MatBottomSheetModule,
+    MatDialogModule, 
+    DragDropModule
   ],
   providers: [
     { provide: MatBottomSheetRef, useValue: {} },

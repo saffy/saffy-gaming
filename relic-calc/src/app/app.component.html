@@ -10,10 +10,8 @@
 <h1>Relic Even Split Tool</h1>
 </mat-card-title>
 
-<app-party-config [(size)]="size"></app-party-config>
+<app-party-config [(size)]="size" (namesChange)="namesChange($event)"></app-party-config>
 <app-relic-select [(relics)]="relics"></app-relic-select>
-
-  <!-- Relics =  {{relics | json}} -->
 
  <div class="go-button-container">
   <button class="go-button" mat-flat-button color="accent" (click)="calculate(size)">Go!</button>

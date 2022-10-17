@@ -105,12 +105,12 @@ export class AppComponent {
    this.open();
   }
 
-  nameChange(names: string[]) {
+  namesChange(names: string[]) {
     this.partyNames = names;
   }
 
   open() {
-    this._bottomSheet.open(LootTableComponent, {data: {calculatedRelics: this.calculated, partySize: this.size}});
+    this._bottomSheet.open(LootTableComponent, {data: {calculatedRelics: this.calculated, partySize: this.size, partyNames: this.partyNames}});
   }
   
 }

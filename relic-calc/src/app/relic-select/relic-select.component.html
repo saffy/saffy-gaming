@@ -1,8 +1,5 @@
-<mat-card>
-    <p>Remember to roll, and change loot!</p>
-<span>Tap to add, Right click to subtract, or use buttons.</span>
-<span>Roll - blues and above, FFA</span>
-<mat-card-actions align="end">
+<mat-card class="mat-elevation-z0">
+<mat-card-actions>
     <button mat-flat-button ><mat-slide-toggle [(ngModel)]="showName">Show Name</mat-slide-toggle></button>
     <button mat-flat-button ><mat-slide-toggle [(ngModel)]="showAP"> Show AP</mat-slide-toggle></button>
 <button mat-flat-button color="primary" (click)="resetRelics($event)"><mat-icon>clear_all</mat-icon>Clear</button>

@@ -1,0 +1,26 @@
+<mat-dialog-content>
+    <div class="dialog-title">
+        <h2 mat-dialog-title>Customize Names</h2>
+    </div>
+    <form>
+        <div class="list-player" cdkDropList (cdkDropListDropped)="drop($event)">
+        <div class="input-player-name" *ngFor="let name of names; let i = index; trackBy:trackByFn" cdkDrag cdkDragLockAxis="y">
+            
+            <mat-form-field appearance="outline">
+                <mat-label>Player {{i+1}}</mat-label>
+                <input name="player{{i+1}}" matInput autocomplete="off" placeholder="Enter name" [(ngModel)]="names[i]">
+            </mat-form-field>
+        <mat-icon>drag_indicator</mat-icon>
+        </div>
+    </div>
+</form>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button mat-button mat-dialog-close>
+        <mat-icon>close</mat-icon> Cancel
+    </button>
+    <button mat-button [mat-dialog-close]="names">
+        <mat-icon>save</mat-icon> Save
+    </button>
+</mat-dialog-actions>
