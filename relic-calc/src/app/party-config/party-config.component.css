@@ -1,18 +1,19 @@
 mat-card {
-    display:flex;
-    justify-content: space-between;
-    align-items: center;
-    align-content: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+}
+
+mat-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
 }
 
 .dialog-title {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-}
-mat-dialog-actions {
-    display: flex;
-    justify-content: flex-end;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
 .button-customize {
@@ -21,31 +22,31 @@ mat-dialog-actions {
 }
 
 .list-player {
-    width:100%;
-    padding:1em 0;
+  width: 100%;
+  padding: 1em 0;
 }
 
 .input-player-name {
   background-color: #7b1fa2;
-    display:grid;
-    grid-template-columns: max-content 30px;
-    column-gap: 1em;
-    justify-content: space-between;
-    align-items: center;
-    white-space: nowrap;
+  display: grid;
+  grid-template-columns: max-content 30px;
+  column-gap: 1em;
+  justify-content: space-between;
+  align-items: center;
+  white-space: nowrap;
 }
 
-.input-player-name mat-form-field{
-    width:max-content;
-    margin-bottom:-1.3em;
-    font-size:14px;
+.input-player-name mat-form-field {
+  width: max-content;
+  margin-bottom: -1.3em;
+  font-size: 14px;
 
 }
 
 .input-player-name {
-    border: 1px solid white;
-    border-radius: 0.5em;
-    margin-bottom:1em;
+  border: 1px solid white;
+  border-radius: 0.5em;
+  margin-bottom: 1em;
 }
 
 .cdk-drag-animating {
@@ -63,27 +64,22 @@ mat-dialog-actions {
 .cdk-drag-preview {
   box-sizing: border-box;
   border-radius: 0.5em;
-  color:white;
+  color: white;
   box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
-              0 8px 10px 1px rgba(0, 0, 0, 0.14),
-              0 3px 14px 2px rgba(0, 0, 0, 0.12);
+    0 8px 10px 1px rgba(0, 0, 0, 0.14),
+    0 3px 14px 2px rgba(0, 0, 0, 0.12);
 }
 
 .input-player-name .mat-input-element {
   caret-color: white;
 }
 
-.input-player-name .mat-input-element {
-  caret-color: white;
-}
-
+/** Override default stylings from theme. */
 ::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
   color: white;
 }
 
-/** Override default stylings from theme. */
-::ng-deep .mat-primary .mat-option.mat-selected:not(.mat-option-disabled)
-{
+::ng-deep .mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
   color: #69f0ae;
 }
 
@@ -100,6 +96,6 @@ mat-dialog-actions {
   color: #69f0ae;
 }
 
-::ng-deep .sizeField .mat-form-field-infix{
-    width:30px;
+::ng-deep .sizeField .mat-form-field-infix {
+  width: 30px;
 }

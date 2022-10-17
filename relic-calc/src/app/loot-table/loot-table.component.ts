@@ -1,9 +1,8 @@
 
 import { Component, OnInit, Input, Output, EventEmitter, ViewEncapsulation, Injectable, Inject} from '@angular/core';
-import {KeyValue} from '@angular/common';
 import { CalculatedRelics, RELIC_LIST, UserRelics } from '../global';
 import {Clipboard} from '@angular/cdk/clipboard';
-import {MatBottomSheet, MatBottomSheetRef, MAT_BOTTOM_SHEET_DATA} from '@angular/material/bottom-sheet';
+import {MatBottomSheetRef, MAT_BOTTOM_SHEET_DATA} from '@angular/material/bottom-sheet';
 
 interface LootTableData {
   calculatedRelics: CalculatedRelics;

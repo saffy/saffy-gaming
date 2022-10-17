@@ -1,6 +1,5 @@
 import { Component, EventEmitter, OnInit, Input, Output } from '@angular/core';
 import { relicList } from '../global';
-import {TooltipPosition} from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-relic-select',
