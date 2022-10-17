@@ -40,6 +40,24 @@ mat-dialog-actions {
     margin-bottom:1em;
 }
 
+::ng-deep .mat-primary .mat-option.mat-selected:not(.mat-option-disabled)
+{
+  color: palegreen;
+}
+
+::ng-deep .mat-chip.mat-standard-chip.mat-chip-selected.mat-primary,
+::ng-deep .mat-form-field.mat-focused .mat-form-field-ripple {
+  background-color: palegreen;
+}
+
+::ng-deep .mat-form-field.mat-focused .mat-form-field-label.mat-accent {
+  color: palegreen;
+}
+
+::ng-deep .mat-form-field.mat-focused.mat-primary .mat-select-arrow {
+  color: palegreen;
+}
+
 ::ng-deep .sizeField .mat-form-field-infix{
     width:30px;
 }

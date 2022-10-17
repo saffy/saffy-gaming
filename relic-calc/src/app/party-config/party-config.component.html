@@ -8,7 +8,7 @@
         </mat-select>
     </mat-form-field>
     
-     group members, for as even a split as possible.</span>
+     group member<span *ngIf="size > 1">s</span>, for as even a split as possible.</span>
      <button class="button-customize" mat-stroked-button color="accent" (click)="customize()"><mat-icon>
         badge
      </mat-icon> Customize</button>
