@@ -15,15 +15,21 @@ mat-dialog-actions {
     justify-content: flex-end;
 }
 
+.button-customize {
+  width: max-content;
+  white-space: pre-line;
+}
+
 .list-player {
     width:100%;
     padding:1em 0;
 }
 
 .input-player-name {
-    width:100%;
-    display:inline-grid;
+  background-color: #7b1fa2;
+    display:grid;
     grid-template-columns: max-content 30px;
+    column-gap: 1em;
     justify-content: space-between;
     align-items: center;
     white-space: nowrap;
@@ -32,30 +38,66 @@ mat-dialog-actions {
 .input-player-name mat-form-field{
     width:max-content;
     margin-bottom:-1.3em;
+    font-size:14px;
 
 }
 
 .input-player-name {
     border: 1px solid white;
+    border-radius: 0.5em;
     margin-bottom:1em;
 }
 
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+
+.list-player.cdk-drop-list-dragging .input-player-name:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.cdk-drag-preview {
+  box-sizing: border-box;
+  border-radius: 0.5em;
+  color:white;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+              0 8px 10px 1px rgba(0, 0, 0, 0.14),
+              0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.input-player-name .mat-input-element {
+  caret-color: white;
+}
+
+.input-player-name .mat-input-element {
+  caret-color: white;
+}
+
+::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+  color: white;
+}
+
+/** Override default stylings from theme. */
 ::ng-deep .mat-primary .mat-option.mat-selected:not(.mat-option-disabled)
 {
-  color: palegreen;
+  color: #69f0ae;
 }
 
 ::ng-deep .mat-chip.mat-standard-chip.mat-chip-selected.mat-primary,
 ::ng-deep .mat-form-field.mat-focused .mat-form-field-ripple {
-  background-color: palegreen;
+  background-color: #69f0ae;
 }
 
 ::ng-deep .mat-form-field.mat-focused .mat-form-field-label.mat-accent {
-  color: palegreen;
+  color: #69f0ae;
 }
 
 ::ng-deep .mat-form-field.mat-focused.mat-primary .mat-select-arrow {
-  color: palegreen;
+  color: #69f0ae;
 }
 
 ::ng-deep .sizeField .mat-form-field-infix{
