@@ -23,7 +23,7 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
     RelicSelectComponent,
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     SharedModule,
     LootTableModule,
     PartyConfigModule,
