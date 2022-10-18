@@ -11,7 +11,7 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { MatTableModule } from '@angular/material/table';
-
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 
 
 @NgModule({
@@ -27,7 +27,8 @@ import { MatTableModule } from '@angular/material/table';
     MatFormFieldModule,
     SharedModule,
     MatTableModule,
-    FormsModule
+    FormsModule,
+    provideFirestore(() => getFirestore()),
   ],
   exports: [LootTableComponent]
 })

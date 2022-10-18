@@ -33,7 +33,7 @@
     <tr class="mat-row" *ngFor="let relic of calculated[i].relics| keyvalue; index as j">
         <td class="mat-cell">
         </td>
-        <td class="mat-cell cell-relic-name" [attr.colSpan]="showMobile? 2: 1"><span>{{RELIC_LIST[relic.key].name}}</span> <span *ngIf="relic.value > 1">x {{relic.value}}</span></td>
+        <td class="mat-cell cell-relic-name" [attr.colSpan]="showMobile? 2: 1"><span>{{RELIC_LIST[relic.key].name}}</span> <span *ngIf="relic.value > 1"> x {{relic.value}}</span></td>
         <td class="mat-cell cell-relic-points">{{RELIC_LIST[relic.key].points * relic.value}}</td>
     </tr>
     <tr *ngIf="calculated[i].points > 0" class="mat-row">
