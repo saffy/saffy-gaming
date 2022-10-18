@@ -1,0 +1,11 @@
+.go-button-container {
+    width: 100%;
+    display:flex;
+    align-items: center;
+}
+button.go-button {
+    width: 50%;
+    line-height: 50px;
+    font-size: x-large;
+    margin: 0 auto;
+}

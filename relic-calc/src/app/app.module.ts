@@ -15,12 +15,14 @@ import { PartyConfigModule } from './party-config/party-config.module';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { MainComponent } from './main/main.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     RelicSelectComponent,
+    MainComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
