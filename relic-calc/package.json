@@ -28,7 +28,9 @@
     "@angular/router": "^14.2.6",
     "@material/icon-button": "^14.0.0",
     "@nguniversal/express-engine": "^14.2.0",
+    "angularfire2": "^5.4.2",
     "express": "^4.15.2",
+    "firebase": "^9.12.1",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

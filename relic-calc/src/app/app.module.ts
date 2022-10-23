@@ -16,6 +16,10 @@ import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { MainComponent } from './main/main.component';
+import { RelicLinkComponent } from './relic-link/relic-link.component';
+import { AppRoutingModule } from './app-routing.module';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 
 
 @NgModule({
@@ -23,6 +27,7 @@ import { MainComponent } from './main/main.component';
     AppComponent,
     RelicSelectComponent,
     MainComponent,
+    RelicLinkComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -37,6 +42,9 @@ import { MainComponent } from './main/main.component';
     MatBottomSheetModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    AppRoutingModule,
   ],
   providers: [
     { provide: MatBottomSheetRef, useValue: {} },

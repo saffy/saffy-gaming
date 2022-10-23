@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Inject, Input, OnInit, Output } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
+import { Firestore, collection, collectionData,doc,addDoc,serverTimestamp, updateDoc} from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-party-config',
@@ -16,7 +17,7 @@ export class PartyConfigComponent implements OnInit {
   names: string[] = [];
   dialogData: string[] = [];
 
-  constructor(public dialog: MatDialog) {
+  constructor(public dialog: MatDialog, private firestore: Firestore) {
    }
 
   ngOnInit(): void {

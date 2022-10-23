@@ -1,0 +1,17 @@
+<p>For {{code}}</p>
+
+<ng-container *ngIf="output;else error">
+    <p>{{output.createdAt.seconds*1000| date:'MMMM d, y, h:mm:ss a z'}}</p>
+    Total AP: {{total(output.split)}}
+    <div *ngFor="let split of output.split">
+        {{split.player}}: {{split.total}}
+        <div *ngFor="let relic of split.relics">
+            {{relic.name}} {{relic.value}}
+        </div>
+    </div>
+</ng-container>
+
+<ng-template #error>
+    OOPS! There isn't any data for this id.
+</ng-template>
+
