@@ -6,6 +6,7 @@ import { RelicLinkService, Splits } from './relic-link.service';
 import { Firestore } from '@angular/fire/firestore';
 import { CalculatedRelics } from '../global';
 import { from, Subject } from 'rxjs';
+import { LootTableService } from '../loot-table/loot-table.service';
 
 type Split = {
   player: string;
@@ -29,7 +30,7 @@ export class RelicLinkComponent implements OnInit {
     private route: ActivatedRoute,
     private linkService: RelicLinkService,
     private location: Location,
-    private firestore: Firestore
+    private firestore: Firestore, 
   ) {}
 
   ngOnInit(): void {
@@ -38,7 +39,6 @@ export class RelicLinkComponent implements OnInit {
       this.output = output;
       this.subj.next(output);
     });
-
   }
   getCode() {
     const code = String(this.route.snapshot.paramMap.get('code'));
@@ -48,5 +48,6 @@ export class RelicLinkComponent implements OnInit {
   total(splits: Split[]){
     return splits.reduce((pv,cv) => pv + cv.total,0)
   }
+
 
 }

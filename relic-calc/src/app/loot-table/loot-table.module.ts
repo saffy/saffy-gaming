@@ -12,6 +12,8 @@ import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { MatTableModule } from '@angular/material/table';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { HttpClientModule } from '@angular/common/http';
+import { LootTableService } from './loot-table.service';
 
 
 @NgModule({
@@ -29,7 +31,9 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
     MatTableModule,
     FormsModule,
     provideFirestore(() => getFirestore()),
+    HttpClientModule
   ],
-  exports: [LootTableComponent]
+  exports: [LootTableComponent],
+  providers: [LootTableService]
 })
 export class LootTableModule { }

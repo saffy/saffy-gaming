@@ -4,6 +4,8 @@ import { CalculatedRelics, RELIC_LIST, UserRelics } from '../global';
 import {Clipboard} from '@angular/cdk/clipboard';
 import {MatBottomSheetRef, MAT_BOTTOM_SHEET_DATA} from '@angular/material/bottom-sheet';
 import { Firestore, collection, collectionData,doc,addDoc,serverTimestamp, updateDoc} from '@angular/fire/firestore';
+import { LootTableService } from './loot-table.service';
+import { Router } from '@angular/router';
 
 interface LootTableData {
   calculatedRelics: CalculatedRelics;
@@ -28,12 +30,13 @@ export class LootTableComponent implements OnInit {
   webNavigator: any= null;
   partyNames: string[] = [];
   showMobile = false;
+  linkName: string = '';
 
   splitConverter = {toFirestore: (calculated: CalculatedRelics) => {
     let split = [];
-    for (let i = 0; i < this.calculated!.length; i++) {
+    for (let i = 0; i < calculated!.length; i++) {
       let relics: Array<{name: string, value: number}> = [];
-      Object.entries(this.calculated[i].relics).forEach(([key,number]) => {
+      Object.entries(calculated[i].relics).forEach(([key,number]) => {
         let nRelics = new Array(number).fill({name: RELIC_LIST[key].name, value: RELIC_LIST[key].points});
         relics.push(...nRelics);
       })
@@ -41,7 +44,7 @@ export class LootTableComponent implements OnInit {
       let playerObj = 
         {player: `Player ${i+1}`,
         relics: relics, 
-        total: this.calculated![i].points
+        total: calculated![i].points
       };
     split.push(playerObj);
     
@@ -54,7 +57,9 @@ export class LootTableComponent implements OnInit {
     @Inject(MAT_BOTTOM_SHEET_DATA) public data: LootTableData, 
     private clipboard: Clipboard, 
     private _bottomSheetRef: MatBottomSheetRef<LootTableComponent>,
-    private firestore: Firestore
+    private firestore: Firestore,
+    private lootTableService: LootTableService,
+    private router: Router
     ) { 
     this.webNavigator = window.navigator;
   }
@@ -177,12 +182,7 @@ export class LootTableComponent implements OnInit {
     return Object.keys(userRelics.relics).length + 2;
   }
 
-  async generateLink() {
-   let splits = collection(this.firestore,'splits'); 
-   let relics = this.splitConverter.toFirestore(this.calculated);
-
-   const docRef = await addDoc(splits,relics);
-   await updateDoc(docRef, {createdAt: serverTimestamp()})
-   console.log("Document written with ID: ", docRef.id);
+  generateLink() {
+   this.lootTableService.createLink(this.calculated).subscribe(string => this.chatText = `${window.location.href}link/${string}`);
   }
 }
